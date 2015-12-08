@@ -1,6 +1,6 @@
 #include "WPILib.h"
 
-/**
+/*
  * This is a demo program showing the use of the RobotDrive class.
  * The SampleRobot class is the base of a robot application that will automatically call your
  * Autonomous and OperatorControl methods at the right time as controlled by the switches on
@@ -10,6 +10,7 @@
  * don't. Unless you know what you are doing, complex code will be much more difficult under
  * this system. Use IterativeRobot or Command-Based instead if you're new.
  */
+ 
 class Robot: public SampleRobot
 {
 	RobotDrive myRobot; // robot drive system
