@@ -1,6 +1,9 @@
 #include "WPILib.h"
 
-/*
+//in arcadedrive now
+// hi corey
+// hi again
+/**
  * This is a demo program showing the use of the RobotDrive class.
  * The SampleRobot class is the base of a robot application that will automatically call your
  * Autonomous and OperatorControl methods at the right time as controlled by the switches on
@@ -10,7 +13,6 @@
  * don't. Unless you know what you are doing, complex code will be much more difficult under
  * this system. Use IterativeRobot or Command-Based instead if you're new.
  */
- 
 class Robot: public SampleRobot
 {
 	RobotDrive myRobot; // robot drive system
@@ -19,7 +21,7 @@ class Robot: public SampleRobot
 public:
 	Robot() :
 			myRobot(0, 1),	// initialize the RobotDrive to use motor controllers on ports 0 and 1
-			stick(0)
+			stick(5)
 	{
 		myRobot.SetExpiration(0.1);
 	}
