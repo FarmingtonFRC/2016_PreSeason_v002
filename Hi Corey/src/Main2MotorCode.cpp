@@ -32,9 +32,10 @@ public:
 		stick(5),		// as they are declared above.
 		lw(LiveWindow::GetInstance()),
 		autoLoopCounter(0),
-		Slave1(23),
 		Motor1(20),
 		Motor2(21),
+		Slave1(23),
+		Slave2(24),
 		t_motor(22),
 		stick2(4),
 		autoLoopCounter2(0)
@@ -43,7 +44,9 @@ public:
 		robotDrive.SetExpiration(0.1);
 		robotDrive.SetSafetyEnabled(false);
 		Slave1.SetControlMode(CANSpeedController::kFollower);
-		Slave1.Set(20);
+		Slave1.Set(0);
+		t_motor.SetControlMode(CANSpeedController::kPercentVbus);
+		t_motor.Set(0);
 //		CameraServer::GetInstance()->SetQuality(50);
 //		CameraServer::GetInstance()->SetSize(2);
 //		//the camera name (ex "cam0") can be found through the roborio web interface
@@ -140,6 +143,7 @@ public:
 //		Camera
 		CameraServer::GetInstance()->SetQuality(50);
 		CameraServer::GetInstance()->StartAutomaticCapture("cam0");
+
 	}
 	void Autonomous()
 	{
@@ -176,6 +180,10 @@ public:
 				//t_motor.Set(stick2.GetZ());
 				//t_motor.Set(stick.GetAxis(Joystick::kDefaultThrottleAxis));
 				t_motor.Set(stick.GetAxis(Joystick::kThrottleAxis));
+
+		//		Current Control mode Debug
+				SmartDashboard::PutNumber("Motor30 Current",t_motor.GetOutputCurrent());
+
 //				t_motor.Set(stick.GetAxis(Joystick::Slider));
 //				if (stick.GetRawButton(3) == true){
 //					t_motor.SetPosition(10000);
