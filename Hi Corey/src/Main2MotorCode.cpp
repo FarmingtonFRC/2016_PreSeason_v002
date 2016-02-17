@@ -267,25 +267,27 @@ public:
 	void Autonomous()
 	{
 		int Loop = SmartDashboard::GetNumber("Loop",400);
-		autoLoopCounter = 0;
-		while(autoLoopCounter < Loop && IsEnabled())
-		{
-			robotDrive.ArcadeDrive(SmartDashboard::GetNumber("Z1",-0.5), SmartDashboard::GetNumber("Y1",0.0));
-			autoLoopCounter++;
-//			SmartDashboard::PutNumber("Counter",autoLoopCounter);
-			Wait(.005);
-		}
-			robotDrive.ArcadeDrive(SmartDashboard::GetNumber("Z2",0.0), SmartDashboard::GetNumber("Y2",0.0));
+				autoLoopCounter = 0;
+				while(autoLoopCounter < Loop && IsEnabled())
+				{
+					robotDrive.ArcadeDrive(SmartDashboard::GetNumber("Z1",-0.5), SmartDashboard::GetNumber("Y1",0.0));
+					autoLoopCounter++;
+		//			SmartDashboard::PutNumber("Counter",autoLoopCounter);
+					Wait(.005);
+				}
 
-			int Loop2 = SmartDashboard::GetNumber("Loop2",400);
+					int Loop2 = SmartDashboard::GetNumber("Loop2",400);
+					autoLoopCounter2 = 0;
+					while(autoLoopCounter2 < Loop && IsEnabled())
+					{
+						robotDrive.ArcadeDrive(SmartDashboard::GetNumber("Z2",0.0), SmartDashboard::GetNumber("Y2",0.0));
+						autoLoopCounter2++;
+						Wait(.005);
+					}
 
-		while(autoLoopCounter2 < Loop2 && IsEnabled())
-		{
-			t_motor.Set(SmartDashboard::GetNumber("Winch1",0.0));
-			autoLoopCounter2++;
-			Wait(.005);
-		}
+					robotDrive.ArcadeDrive(0.0,0.0);
 
+					myServo->SetAngle(175);
 	}
 
 	void OperatorControl()
